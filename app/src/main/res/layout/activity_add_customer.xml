@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <com.lsy.wisdom.clockin.widget.IToolbar
+                android:id="@+id/add_log_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:minHeight="?actionBarSize"
+                android:paddingTop="@dimen/bar_top"
+                app:navigationIcon="@mipmap/back_icon"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:title="添加客户"
+                app:titleTextColor="@color/tab_nofocuse" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_height"
+                    android:layout_marginTop="@dimen/ten"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/margin"
+                    android:text="基本信息"
+                    android:textColor="@color/four"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:id="@+id/cusm_time_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_height"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="@dimen/margin"
+                        android:text="开始时间"
+                        android:textColor="@color/four"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/cusm_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@mipmap/black_into"
+                        android:drawablePadding="@dimen/twenty"
+                        android:paddingRight="@dimen/margin"
+                        android:text="请选择"
+                        android:textColor="@color/tex_b"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_height"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/margin"
+                        android:text="类型"
+                        android:textColor="@color/four"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/cusm_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:hint="输入客户类型"
+                        android:paddingRight="@dimen/thirty"
+                        android:textColor="@color/four"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_height"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/margin"
+                    android:text="客户信息"
+                    android:textColor="@color/four"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_height"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/margin"
+                        android:text="所属集团"
+                        android:textColor="@color/four"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/cusm_jitian_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:hint="输入客户名称"
+                        android:paddingRight="@dimen/thirty"
+                        android:textColor="@color/four"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_height"
+                    android:layout_marginTop="@dimen/five"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/margin"
+                        android:text="客户名称"
+                        android:textColor="@color/four"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/cusm_bloc_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:hint="输入客户名称"
+                        android:paddingRight="@dimen/thirty"
+                        android:textColor="@color/four"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_height"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/margin"
+                    android:text="联系人"
+                    android:textColor="@color/four"
+                    android:textSize="12sp" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_height"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/margin"
+                        android:text="姓名"
+                        android:textColor="@color/four"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/client_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:hint="输入联系人名称"
+                        android:paddingRight="@dimen/thirty"
+                        android:textColor="@color/four"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_height"
+                    android:layout_marginTop="@dimen/two"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/margin"
+                        android:text="性别"
+                        android:textColor="@color/four"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/client_sex"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:hint="性别"
+                        android:paddingRight="@dimen/thirty"
+                        android:textColor="@color/four"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_height"
+                    android:layout_marginTop="@dimen/two"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/margin"
+                        android:text="职位"
+                        android:textColor="@color/four"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/client_job_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:hint="请输入联系人职位"
+                        android:paddingRight="@dimen/thirty"
+                        android:textColor="@color/three"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_height"
+                    android:layout_marginTop="@dimen/two"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/margin"
+                        android:text="所在部门"
+                        android:textColor="@color/four"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/client_department"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:hint="请输入联系人职位"
+                        android:paddingRight="@dimen/thirty"
+                        android:textColor="@color/three"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_height"
+                    android:layout_marginTop="@dimen/two"
+                    android:layout_marginBottom="108dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/margin"
+                        android:text="手机号"
+                        android:textColor="@color/four"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/client_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:hint="请输入"
+                        android:inputType="phone"
+                        android:maxLength="11"
+                        android:paddingRight="@dimen/thirty"
+                        android:textColor="@color/tab_focuse"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/cusm_commit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_height"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginBottom="@dimen/thirty"
+        android:background="@drawable/buttom_blue"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+</RelativeLayout>

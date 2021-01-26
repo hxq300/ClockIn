@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <com.lsy.wisdom.clockin.widget.IToolbar
+                android:id="@+id/plog_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:minHeight="?actionBarSize"
+                android:paddingTop="@dimen/bar_top"
+                app:navigationIcon="@mipmap/back_icon"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:title="新建日志"
+                app:titleTextColor="@color/tab_nofocuse" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/five"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/margin"
+            android:paddingRight="@dimen/margin">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line_height"
+                android:gravity="center_vertical"
+                android:text="工作内容"
+                android:textColor="@color/four"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/plog_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:gravity="left"
+                android:hint="请输入"
+                android:lineHeight="@dimen/twenty"
+                android:maxLength="200"
+                android:minLines="5"
+                android:textColor="@color/six"
+                android:textSize="13sp" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/two"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line_height"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/margin"
+                android:text="添加图片"
+                android:textColor="@color/four"
+                android:textSize="15sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/add_recycler_plog"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="@dimen/margin">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/plog_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_height"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginBottom="@dimen/thirty"
+        android:background="@drawable/buttom_blue"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+
+</RelativeLayout>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="2dp"
+    android:background="@drawable/white_circle_bg"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/ten">
+
+    <ImageView
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:src="@mipmap/renyuan_image"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/twelve"
+        android:paddingRight="@dimen/five">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="3dp"
+                android:layout_height="@dimen/margin"
+                android:background="@color/tab_focuse" />
+
+            <TextView
+                android:id="@+id/cp_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/seven"
+                android:layout_weight="1"
+                android:text="中铁十二局"
+                android:textColor="@color/four"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/cp_principal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineHeight="@dimen/twenty"
+            android:paddingTop="@dimen/seven"
+            android:paddingBottom="@dimen/seven"
+            android:text="负责人："
+            android:textColor="@color/six"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/cp_staff_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineHeight="@dimen/twenty"
+            android:paddingTop="@dimen/seven"
+            android:paddingBottom="@dimen/seven"
+            android:text="员工姓名："
+            android:textColor="@color/six"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/cp_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineHeight="@dimen/twenty"
+            android:paddingTop="@dimen/seven"
+            android:paddingBottom="@dimen/seven"
+            android:text="跟进内容："
+            android:textColor="@color/six"
+            android:textSize="15sp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/cp_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=""
+                android:textColor="@color/four"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/cp_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/four"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

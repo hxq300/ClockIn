@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <com.lsy.wisdom.clockin.widget.IToolbar
+            android:id="@+id/clock_in_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:minHeight="?actionBarSize"
+            android:paddingTop="@dimen/bar_top"
+            app:navigationIcon="@mipmap/back_icon"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="打卡"
+            app:titleTextColor="@color/tab_nofocuse"></com.lsy.wisdom.clockin.widget.IToolbar>
+
+        <!--        <androidx.appcompat.widget.Toolbar-->
+        <!--            android:id="@+id/toolbar"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="?attr/actionBarSize"-->
+        <!--            android:background="@color/white"-->
+        <!--            app:popupTheme="@style/AppTheme.PopupOverlay" >-->
+
+        <!--        </androidx.appcompat.widget.Toolbar>-->
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/bmapView"
+        android:layout_width="fill_parent"
+        android:layout_height="220dp"
+        android:clickable="false" />
+
+
+    <LinearLayout
+        android:id="@+id/get_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tex_location_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/margin"
+            android:text=""
+            android:textColor="@color/three"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/ten"
+            android:padding="@dimen/ten"
+            android:src="@mipmap/location_icon" />
+
+    </LinearLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="@dimen/ten">
+
+                <EditText
+                    android:id="@+id/edit_remark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="left"
+                    android:hint="签到说明（选填）"
+                    android:minLines="3"
+                    android:textColor="@color/three"
+                    android:textSize="15sp" />
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/add_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="@dimen/margin">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/two"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/image_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingLeft="@dimen/thirty"
+                    android:paddingTop="@dimen/ten"
+                    android:paddingRight="@dimen/margin"
+                    android:paddingBottom="@dimen/ten"
+                    android:src="@mipmap/card_picture" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/two"
+                    android:background="@color/white" />
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/clock_click"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginBottom="@dimen/thirty"
+                android:background="@drawable/buttom_blue_circle"
+                android:text="打卡"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

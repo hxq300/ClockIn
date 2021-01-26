@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+<!--    <solid android:color="@color/white" />-->
+    <stroke
+        android:width="0.5dp"
+        android:color="@color/eight" />
+    <corners android:radius="3dp" />
+    <!--type的值有三种：linear-线性；radial-径向；sweep-3D效果。-->
+    <!--    <corners android:radius="4dp" />-->
+
+
+</shape>

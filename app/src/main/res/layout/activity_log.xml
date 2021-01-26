@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:orientation="vertical">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <com.lsy.wisdom.clockin.widget.IToolbar
+            android:id="@+id/record_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?actionBarSize"
+            android:paddingTop="28dp"
+            app:navigationIcon="@mipmap/back_icon"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title=""
+            app:titleTextColor="@color/tab_nofocuse">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/ten">
+
+                <com.lsy.wisdom.clockin.widget.GroupButtonView
+                    android:id="@+id/gbv_log"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    app:groupBtnCodeText="0#1"
+                    app:groupBtnNameText="我的创建#提交给我的" />
+            </RelativeLayout>
+
+
+        </com.lsy.wisdom.clockin.widget.IToolbar>
+
+
+        <!--        <androidx.appcompat.widget.Toolbar-->
+        <!--            android:id="@+id/toolbar"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="?attr/actionBarSize"-->
+        <!--            android:background="@color/white"-->
+        <!--            app:popupTheme="@style/AppTheme.PopupOverlay" >-->
+
+        <!--        </androidx.appcompat.widget.Toolbar>-->
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/smartRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/id_record_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingTop="@dimen/seven"
+            android:paddingBottom="@dimen/thirty"/>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+
+
+
+</LinearLayout>

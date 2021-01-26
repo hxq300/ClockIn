@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <com.lsy.wisdom.clockin.widget.IToolbar
+            android:id="@+id/ndesc_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:minHeight="?actionBarSize"
+            android:paddingTop="@dimen/bar_top"
+            app:navigationIcon="@mipmap/back_icon"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="公告详情"
+            app:titleTextColor="@color/tab_nofocuse" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ten"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/twelve">
+
+        <TextView
+            android:id="@+id/ndesc_title"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/line_height"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/four"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/ndesc_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/eight"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/ndesc_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginBottom="@dimen/line_height"
+            android:lineHeight="@dimen/twenty"
+            android:text=""
+            android:textColor="@color/four"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_height"
+        android:layout_marginTop="@dimen/five"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingLeft="@dimen/margin"
+            android:paddingRight="@dimen/margin"
+            android:text="发布人"
+            android:textColor="@color/four"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:src="@mipmap/people_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingLeft="@dimen/five"
+            android:text="陈香"
+            android:textColor="@color/four"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

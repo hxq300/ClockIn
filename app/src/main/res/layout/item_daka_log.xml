@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/five"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/image_card"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="@dimen/ten"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/ten">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_height"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/twelve"
+            android:paddingRight="@dimen/twelve">
+
+            <TextView
+                android:layout_width="3dp"
+                android:layout_height="@dimen/margin"
+                android:layout_gravity="center_vertical"
+                android:background="@color/tab_focuse" />
+
+            <TextView
+                android:id="@+id/dlog_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_marginBottom="@dimen/five"
+                android:layout_weight="1"
+                android:text=""
+                android:textColor="@color/three"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/fenge"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_marginRight="@dimen/ten"
+            android:layout_marginBottom="@dimen/ten" />
+
+        <TextView
+            android:id="@+id/dlog_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/twelve"
+            android:drawablePadding="@dimen/five"
+            android:gravity="center_vertical"
+            android:lineHeight="23dp"
+            android:text=""
+            android:textColor="@color/three"
+            android:textSize="13sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/baoxiao_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingLeft="@dimen/margin"
+                android:paddingBottom="@dimen/margin">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

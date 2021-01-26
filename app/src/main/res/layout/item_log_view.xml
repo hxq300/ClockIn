@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="2dp"
+    android:background="@drawable/white_circle_bg"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/ten">
+
+    <ImageView
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:src="@mipmap/renyuan_image"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/twelve"
+        android:paddingRight="@dimen/five">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="3dp"
+                android:layout_height="@dimen/margin"
+                android:background="@color/tab_focuse" />
+
+            <TextView
+                android:id="@+id/log_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/seven"
+                android:layout_weight="1"
+                android:text=""
+                android:textColor="@color/four"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/log_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/nine"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/log_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineHeight="@dimen/twenty"
+            android:maxLines="2"
+            android:paddingTop="@dimen/ten"
+            android:paddingBottom="@dimen/ten"
+            android:text=""
+            android:textColor="@color/six"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

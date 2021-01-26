@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <com.lsy.wisdom.clockin.widget.IToolbar
+            android:id="@+id/add_leave_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:minHeight="?actionBarSize"
+            android:paddingTop="@dimen/bar_top"
+            app:navigationIcon="@mipmap/back_icon"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="项目列表"
+            app:titleTextColor="@color/tab_nofocuse" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.donkingliang.refresh.RefreshLayout
+        android:id="@+id/refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_project"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingTop="@dimen/ten"
+            android:paddingBottom="@dimen/thirty">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <!-- RefreshLayout嵌套的第二个View表示空布局。可选 -->
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:gravity="center">-->
+
+        <!--            <TextView-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="已全部展示" />-->
+        <!--        </LinearLayout>-->
+
+    </com.donkingliang.refresh.RefreshLayout>
+
+
+</LinearLayout>

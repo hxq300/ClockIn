@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@mipmap/mine_top_bg" />
+
+        <LinearLayout
+            android:id="@+id/mine_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/twenty"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="@dimen/twenty"
+            android:background="@drawable/mine_white"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/twelve"
+            android:paddingTop="@dimen/thirty"
+            android:paddingBottom="@dimen/thirty">
+
+            <ImageView
+                android:id="@+id/mine_image"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginRight="@dimen/twelve"
+                android:src="@mipmap/people_icon" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/mine_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/line_height"
+                    android:gravity="center"
+                    android:text="一叶知秋"
+                    android:textColor="@color/three"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/mine_remark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/twenty"
+                    android:singleLine="true"
+                    android:text="大爱之心做事，感恩之心做人"
+                    android:textColor="@color/six"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/mine_information"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_height"
+        android:layout_marginTop="@dimen/twenty"
+        android:background="@color/white"
+        android:drawableLeft="@mipmap/mine_ziliao"
+        android:drawableRight="@mipmap/black_into"
+        android:drawablePadding="@dimen/ten"
+        android:gravity="center_vertical"
+        android:onClick="persionData"
+        android:paddingLeft="21dp"
+        android:paddingRight="21dp"
+        android:text="个人资料"
+        android:textColor="@color/three"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/mine_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_height"
+        android:layout_marginTop="@dimen/two"
+        android:background="@color/white"
+        android:drawableLeft="@mipmap/mine_yijianfankui"
+        android:drawableRight="@mipmap/black_into"
+        android:drawablePadding="@dimen/ten"
+        android:gravity="center_vertical"
+        android:onClick="persionData"
+        android:paddingLeft="21dp"
+        android:paddingRight="21dp"
+        android:text="意见反馈"
+        android:textColor="@color/three"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/mine_settings"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_height"
+        android:layout_marginTop="@dimen/two"
+        android:background="@color/white"
+        android:drawableLeft="@mipmap/mine_setting"
+        android:drawableRight="@mipmap/black_into"
+        android:drawablePadding="@dimen/ten"
+        android:gravity="center_vertical"
+        android:onClick="persionData"
+        android:paddingLeft="21dp"
+        android:paddingRight="21dp"
+        android:text="系统设置"
+        android:textColor="@color/three"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/mine_doc"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_height"
+        android:layout_marginTop="@dimen/two"
+        android:background="@color/white"
+        android:drawableLeft="@mipmap/mine_wendang"
+        android:drawableRight="@mipmap/black_into"
+        android:drawablePadding="@dimen/ten"
+        android:gravity="center_vertical"
+        android:onClick="persionData"
+        android:paddingLeft="21dp"
+        android:paddingRight="21dp"
+        android:text="电子文档"
+        android:textColor="@color/three"
+        android:textSize="15sp" />
+
+</LinearLayout>

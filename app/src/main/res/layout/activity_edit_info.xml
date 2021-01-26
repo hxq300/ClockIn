@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <com.lsy.wisdom.clockin.widget.IToolbar
+            android:id="@+id/personal_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:minHeight="?actionBarSize"
+            android:paddingTop="@dimen/bar_top"
+            app:navigationIcon="@mipmap/back_icon"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="编辑个签"
+            app:titleTextColor="@color/tab_nofocuse" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/two"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/twenty">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/line_height"
+            android:gravity="center"
+            android:text="个性签名"
+            android:textColor="@color/six"
+            android:textSize="15sp"
+            android:visibility="invisible" />
+
+        <EditText
+            android:id="@+id/signature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin"
+            android:layout_marginBottom="@dimen/twenty"
+            android:gravity="left"
+            android:hint="请输入"
+            android:lineHeight="@dimen/thirty"
+            android:textColor="@color/six"
+            android:textSize="13sp" />
+
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/p_commit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_height"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginBottom="@dimen/thirty"
+        android:background="@drawable/buttom_blue"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+
+</LinearLayout>

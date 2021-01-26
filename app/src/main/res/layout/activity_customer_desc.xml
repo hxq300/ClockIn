@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <com.lsy.wisdom.clockin.widget.IToolbar
+            android:id="@+id/cdesc_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:minHeight="?actionBarSize"
+            android:paddingTop="@dimen/bar_top"
+            app:navigationIcon="@mipmap/back_icon"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="客户详情"
+            app:titleTextColor="@color/tab_nofocuse" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.lsy.wisdom.clockin.widget.RecyclerScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line_height"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/margin"
+                android:text="客户信息"
+                android:textColor="@color/four"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line_height"
+                android:layout_marginTop="@dimen/two"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/margin"
+                    android:text="所属集团"
+                    android:textColor="@color/four"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/cdesc_util"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="@dimen/thirty"
+                    android:text=""
+                    android:textColor="@color/four"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line_height"
+                android:layout_marginTop="@dimen/two"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/margin"
+                    android:text="客户名称"
+                    android:textColor="@color/four"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/cdesc_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="@dimen/thirty"
+                    android:text=""
+                    android:textColor="@color/four"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line_height"
+                android:layout_marginTop="@dimen/ten"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/margin"
+                android:text="基本信息"
+                android:textColor="@color/four"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line_height"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/margin"
+                    android:text="录入员工"
+                    android:textColor="@color/four"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/cdesc_yuangong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="@dimen/thirty"
+                    android:text=""
+                    android:textColor="@color/four"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line_height"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/margin"
+                    android:text="开始时间"
+                    android:textColor="@color/four"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/cdesc_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="@dimen/thirty"
+                    android:text=""
+                    android:textColor="@color/four"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line_height"
+                android:layout_marginTop="@dimen/two"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/margin"
+                    android:text="类型"
+                    android:textColor="@color/four"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/cdesc_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="@dimen/thirty"
+                    android:text="拜访"
+                    android:textColor="@color/four"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line_height"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/margin"
+                android:text="联系人"
+                android:textColor="@color/four"
+                android:textSize="12sp" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/cdesc_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingTop="@dimen/seven">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </com.lsy.wisdom.clockin.widget.RecyclerScrollView>
+
+</LinearLayout>

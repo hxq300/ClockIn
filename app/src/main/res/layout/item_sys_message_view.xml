@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:padding="@dimen/five">
+
+    <TextView
+        android:id="@+id/smes_time"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/thirty"
+        android:gravity="center"
+        android:text="2020-03-12 15:30:15"
+        android:textColor="@color/nine"
+        android:textSize="13sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:background="@drawable/white_circle_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/smes_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_height"
+            android:drawableLeft="@mipmap/tip_icon"
+            android:drawablePadding="@dimen/five"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/twelve"
+            android:text="系统提示"
+            android:textColor="@color/three"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/smes_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineHeight="22dp"
+            android:padding="@dimen/twelve"
+            android:text="检测到新版本V10.2，为方便您的使用，建议您尽快更新！检测到新版本V10.2，为方便您的使用，建议您尽快更新！检测到新版本V10.2，为方便您的使用，建议您尽快更新！"
+            android:textColor="@color/three"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

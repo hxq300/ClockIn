@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/view_white_dialog"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ten"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:translationY="-1dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin"
+            android:lineHeight="@dimen/twenty"
+            android:text="您的满意是我们永恒的追求，\n我们将积极妥善的为您解决。"
+            android:textColor="@color/three"
+            android:textSize="16sp" />
+
+        <!--        <View style="@style/fenge"/>-->
+
+        <TextView
+            android:id="@+id/tv_close"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:padding="@dimen/margin"
+            android:text="知道了"
+            android:textColor="@color/orange"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

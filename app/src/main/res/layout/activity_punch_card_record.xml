@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <com.lsy.wisdom.clockin.widget.IToolbar
+            android:id="@+id/punch_card_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:minHeight="?actionBarSize"
+            android:paddingTop="@dimen/bar_top"
+            app:navigationIcon="@mipmap/back_icon"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="   "
+            app:titleTextColor="@color/tab_nofocuse">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/thirty">
+
+                <com.lsy.wisdom.clockin.widget.GroupButtonView
+                    android:id="@+id/gbv_pcard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    app:groupBtnCodeText="0#1"
+                    app:groupBtnNameText="我的#全部" />
+            </RelativeLayout>
+
+        </com.lsy.wisdom.clockin.widget.IToolbar>
+
+        <!--        <androidx.appcompat.widget.Toolbar-->
+        <!--            android:id="@+id/toolbar"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="?attr/actionBarSize"-->
+        <!--            android:background="@color/white"-->
+        <!--            app:popupTheme="@style/AppTheme.PopupOverlay" >-->
+
+        <!--        </androidx.appcompat.widget.Toolbar>-->
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.lsy.wisdom.calendardemo.view.DataView
+        android:id="@+id/week"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_ffffff"></com.lsy.wisdom.calendardemo.view.DataView>
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/info"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="center"-->
+    <!--        android:layout_weight="1"-->
+    <!--        android:gravity="center|left"-->
+    <!--        android:lineSpacingExtra="3dp"-->
+    <!--        android:lineSpacingMultiplier="1.2"-->
+    <!--        android:textColor="@color/color_666666"-->
+    <!--        android:textSize="14sp" />-->
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_record"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/thirty">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </RelativeLayout>
+
+</LinearLayout>

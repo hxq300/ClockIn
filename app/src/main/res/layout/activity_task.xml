@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <com.lsy.wisdom.clockin.widget.IToolbar
+            android:id="@+id/task_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:minHeight="?actionBarSize"
+            android:paddingTop="@dimen/bar_top"
+            app:navigationIcon="@mipmap/back_icon"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title=""
+            app:titleTextColor="@color/tab_nofocuse" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!--tabTextAppearance：Tab内文字的样式，TabLayout没有提供直接属性设置文字大小，需通过该属性指定style样式从而改变文字大小-->
+    <!--tabMode：Tab的显示模式，默认为fixed（固定不能滑动，标签很多时会被挤压），可设置为scrollable（标签很多时可向左滑动）-->
+    <!--tabGravity：内容的显示模式，可选center（居中）和fill（填充）-->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/task_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_centerInParent="true"
+        android:background="@color/white"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/tab_focuse"
+        app:tabIndicatorFullWidth="true"
+        app:tabIndicatorHeight="2dp"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/tab_focuse"
+        app:tabTextColor="@color/eight"></com.google.android.material.tabs.TabLayout>
+
+
+    <com.donkingliang.refresh.RefreshLayout
+        android:id="@+id/refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/task_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingTop="@dimen/seven"
+            android:paddingBottom="@dimen/thirty">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </com.donkingliang.refresh.RefreshLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:orientation="vertical">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <com.lsy.wisdom.clockin.widget.IToolbar
+            android:id="@+id/my_task_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?actionBarSize"
+            android:paddingTop="28dp"
+            app:navigationIcon="@mipmap/back_icon"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="任务"
+            app:titleTextColor="@color/tab_nofocuse">
+
+        </com.lsy.wisdom.clockin.widget.IToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:id="@+id/task_my"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:padding="@dimen/thirty"
+        android:drawableRight="@mipmap/my_task"
+        android:text="我负责的"
+        android:textColor="@color/three"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/task_join"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginLeft="@dimen/margin"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:padding="@dimen/thirty"
+        android:drawableRight="@mipmap/task_join"
+        android:text="我参与的"
+        android:textColor="@color/three"
+        android:textSize="16sp" />
+
+
+    <TextView
+        android:id="@+id/task_creat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:padding="@dimen/thirty"
+        android:drawableRight="@mipmap/order_task"
+        android:text="我派发的"
+        android:textColor="@color/three"
+        android:textSize="16sp" />
+</LinearLayout>
