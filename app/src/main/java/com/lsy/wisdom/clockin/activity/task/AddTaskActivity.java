@@ -558,7 +558,7 @@ public class AddTaskActivity extends AppCompatActivity implements QuanXian.OnPer
     private void updateOss(String filename, String filePath) {
 
         //初始化OssService类，参数分别是Content，accessKeyId，accessKeySecret，endpoint，bucketName（后4个参数是您自己阿里云Oss中参数）
-        OssService ossService = new OssService(AddTaskActivity.this, "LTAI4Fjcn7J9c5aCVFTYabqE", "EuufkpKHommuLDd6EawJQac8togdPn", "http://oss-cn-shanghai.aliyuncs.com", "jjjt");
+        OssService ossService = new OssService(AddTaskActivity.this, "LTAI4Fjcn7J9c5aCVFTYabqE", OssService.ACCESS_KEY_SECRET, "http://oss-cn-shanghai.aliyuncs.com", "jjjt");
         //初始化OSSClient
         ossService.initOSSClient();
 

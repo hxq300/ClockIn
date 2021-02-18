@@ -75,6 +75,7 @@ public class RequestURL {
     //项目日志
     public static String getProjectLog = RequestUrl + "/ProjectLog/FindProjectLogByProjectId?";//查找项目对应的项目日志
     public static String addProjectLog = RequestUrl + "/ProjectLog/InsertProjectLog?";//增加项目日志
+    public static String removeProjectLog = RequestUrl + "/ProjectLog/InsertProjectLog?";//删除日志
 
     //关联
     public static String bindingProject = RequestUrl + "/Project/FindProjectByStaffIdB?";//关联项目绑定

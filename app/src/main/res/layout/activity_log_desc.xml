@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,130 +22,157 @@
             app:titleTextColor="@color/tab_nofocuse" />
 
     </com.google.android.material.appbar.AppBarLayout>
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/line_height"
-        android:layout_marginTop="@dimen/ten"
-        android:background="@color/white"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/margin"
-            android:text="时间"
-            android:textColor="@color/four"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/ld_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="@dimen/thirty"
-            android:text=""
-            android:textColor="@color/six"
-            android:textSize="15sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/five"
-        android:background="@color/white"
-        android:gravity="center_vertical"
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/margin">
-
-        <TextView
+        android:layout_height="match_parent">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="@dimen/margin"
-            android:text="工作内容"
-            android:textColor="@color/three"
-            android:textSize="16sp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line_height"
+                android:layout_marginTop="@dimen/ten"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/ld_work_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:lineHeight="@dimen/edit_hieight"
-            android:paddingLeft="@dimen/margin"
-            android:paddingRight="@dimen/margin"
-            android:text=""
-            android:textColor="@color/six"
-            android:textSize="15sp" />
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/margin"
+                    android:text="时间"
+                    android:textColor="@color/four"
+                    android:textSize="16sp" />
 
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/ld_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="@dimen/thirty"
+                    android:text=""
+                    android:textColor="@color/six"
+                    android:textSize="15sp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/five"
-        android:background="@color/white"
-        android:gravity="center_vertical"
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/margin">
+            </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="@dimen/margin"
-            android:text="明日计划"
-            android:textColor="@color/three"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/ld_plan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:lineHeight="@dimen/edit_hieight"
-            android:paddingLeft="@dimen/margin"
-            android:paddingRight="@dimen/margin"
-            android:text=""
-            android:textColor="@color/six"
-            android:textSize="15sp" />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/two"
-        android:background="@color/white"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/line_height"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/margin"
-            android:text="图片"
-            android:textColor="@color/four"
-            android:textSize="15sp" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/log_recycler"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:paddingLeft="@dimen/margin"
+                android:layout_marginTop="@dimen/five"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
                 android:paddingBottom="@dimen/margin">
 
-            </androidx.recyclerview.widget.RecyclerView>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="@dimen/margin"
+                    android:text="工作内容"
+                    android:textColor="@color/three"
+                    android:textSize="16sp" />
 
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/ld_work_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineHeight="@dimen/edit_hieight"
+                    android:paddingLeft="@dimen/margin"
+                    android:paddingRight="@dimen/margin"
+                    android:text=""
+                    android:textColor="@color/six"
+                    android:textSize="15sp" />
 
-    </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/five"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/margin">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="@dimen/margin"
+                    android:text="明日计划"
+                    android:textColor="@color/three"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/ld_plan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineHeight="@dimen/edit_hieight"
+                    android:paddingLeft="@dimen/margin"
+                    android:paddingRight="@dimen/margin"
+                    android:text=""
+                    android:textColor="@color/six"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/two"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line_height"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/margin"
+                    android:text="图片"
+                    android:textColor="@color/four"
+                    android:textSize="15sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/log_recycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:paddingLeft="@dimen/margin"
+                        android:paddingBottom="@dimen/margin">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/btn_del"
+                android:layout_width="280dp"
+                android:layout_height="@dimen/line_height"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="@color/btn_red"
+                android:gravity="center"
+                android:text="删除"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:layout_marginBottom="@dimen/dp_10"/>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+
+
 
 
 </LinearLayout>

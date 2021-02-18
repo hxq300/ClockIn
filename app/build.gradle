@@ -12,11 +12,12 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        flavorDimensions "versionCode"
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -31,6 +32,35 @@ android {
             jniLibs.srcDir 'libs'
 //            jni.srcDirs = []    //disable automatic ndk-build
         }
+    }
+
+
+    //多渠道打包支持
+    productFlavors {
+
+        Tencent {//投放应用宝市场
+        }
+        Baidu {//投放百度市场
+        }
+        Wandoujia {//投放豌豆荚市场
+        }
+        Vivo {//投放vivo市场
+        }
+        Oppo {//投放oppo市场
+        }
+        Xiaomi {//投放小米市场
+        }
+        Meizu {//投放魅族市场
+        }
+        Huawei {//投放华为应用市场
+        }
+        HiMarket {//投放安卓市场
+        }
+
+    }
+    //注意我注释掉的，可以去掉注释，那样的话，下面这句就可以不用了
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
     }
 
 }

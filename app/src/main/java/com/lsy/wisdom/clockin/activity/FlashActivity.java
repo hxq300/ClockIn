@@ -13,7 +13,11 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.gif.GifDrawable;
 import com.bumptech.glide.request.target.ImageViewTarget;
 import com.lsy.wisdom.clockin.R;
+import com.lsy.wisdom.clockin.activity.add.UpdateSignedActivity;
+import com.lsy.wisdom.clockin.dialog.OnUserAgreementInterface;
+import com.lsy.wisdom.clockin.dialog.UserAgreementDialog;
 import com.lsy.wisdom.clockin.request.OKHttpClass;
+import com.lsy.wisdom.clockin.utils.SharedUtils;
 import com.lsy.wisdom.clockin.utils.StatusBarUtil;
 
 
@@ -24,7 +28,7 @@ import butterknife.ButterKnife;
  * Created by lsy on 2020/5/14
  * todo :
  */
-public class FlashActivity extends AppCompatActivity {
+public class FlashActivity extends AppCompatActivity{
 
     @BindView(R.id.flash_image)
     ImageView flashImage;
@@ -49,6 +53,7 @@ public class FlashActivity extends AppCompatActivity {
     }
 
     private void initGif() {
+
 //        Glide.with(this)
 //                .asGif()
 //                .load(R.drawable.flash_gif)
@@ -65,23 +70,62 @@ public class FlashActivity extends AppCompatActivity {
 //                        }
 //                    }
 //                });
+    // todo:老业务
 
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (OKHttpClass.getUserId(FlashActivity.this) == 0) {
-                    //如果用户是第一次启动
-                    Intent toLogin = new Intent(FlashActivity.this, LoginActivity.class);
-                    startActivity(toLogin);
-                    finish();
-                } else {
-                    Intent tomain = new Intent(FlashActivity.this, MainActivity.class);
-                    startActivity(tomain);
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                if (OKHttpClass.getUserId(FlashActivity.this) == 0) {
+//                    //如果用户是第一次启动
+//                    Intent toLogin = new Intent(FlashActivity.this, LoginActivity.class);
+//                    startActivity(toLogin);
+//                    finish();
+//                } else {
+//                    Intent tomain = new Intent(FlashActivity.this, MainActivity.class);
+//                    startActivity(tomain);
+//                    finish();
+//                }
+//            }
+//        }, 3000);
+
+        // todo: 添加用户隐私政策
+        SharedUtils sharedUtils = new SharedUtils(FlashActivity.this, SharedUtils.CLOCK);
+        UserAgreementDialog userAgreementDialog = new UserAgreementDialog();
+        if (!sharedUtils.getBoolean(SharedUtils.IS_AGREEMENT)){
+            userAgreementDialog.setOnUserAgreementInterface(new OnUserAgreementInterface() {
+                @Override
+                public void onRefuseClick() { // 拒接
                     finish();
                 }
-            }
-        }, 3000);
 
+                @Override
+                public void onAgreeClick() { // 同意
+
+                    sharedUtils.setBoolean(SharedUtils.IS_AGREEMENT,true);
+                    login();
+                }
+
+
+            });
+        }else {
+            login();
+        }
+
+        userAgreementDialog.show(getSupportFragmentManager(),"");
+
+    }
+
+    private void login() {
+        if (OKHttpClass.getUserId(FlashActivity.this) == 0) {
+            //如果用户是第一次启动
+            Intent toLogin = new Intent(FlashActivity.this, LoginActivity.class);
+            startActivity(toLogin);
+            finish();
+        } else {
+            Intent tomain = new Intent(FlashActivity.this, MainActivity.class);
+            startActivity(tomain);
+            finish();
+        }
     }
 
 

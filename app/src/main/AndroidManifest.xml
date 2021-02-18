@@ -55,6 +55,13 @@
         android:sharedUserId="android.uid.system"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!--友盟-->
+        <meta-data android:value="600fdaa4cf7f2d51407bc79d" android:name="UMENG_APPKEY"/>
+        <meta-data android:value="${UMENG_CHANNEL_VALUE}" android:name="UMENG_CHANNEL"/>
+
+
+
         <activity android:name=".activity.FlashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

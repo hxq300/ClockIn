@@ -30,6 +30,7 @@ public class SharedUtils {
     public static final String PRINCIPALID = "principalId";//负责人ID
 
     public static final String IRDETAILS = "ins_record_details";//检查记录详情
+    public static final String IS_AGREEMENT = "is_agreement"; //用户是否同意 用户隐私协议
 
 
     private Context context;

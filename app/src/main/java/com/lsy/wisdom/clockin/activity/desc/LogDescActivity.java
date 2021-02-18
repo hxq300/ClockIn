@@ -2,6 +2,7 @@ package com.lsy.wisdom.clockin.activity.desc;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,18 +15,27 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.lsy.wisdom.clockin.R;
 import com.lsy.wisdom.clockin.bean.LogData;
+import com.lsy.wisdom.clockin.request.OKHttpClass;
 import com.lsy.wisdom.clockin.request.RequestURL;
+import com.lsy.wisdom.clockin.utils.GeneralMethod;
 import com.lsy.wisdom.clockin.utils.L;
 import com.lsy.wisdom.clockin.utils.StatusBarUtil;
+import com.lsy.wisdom.clockin.utils.ToastUtils;
 import com.lsy.wisdom.clockin.widget.IToolbar;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by lsy on 2020/5/28
@@ -43,6 +53,8 @@ public class LogDescActivity extends AppCompatActivity {
     IToolbar ldToolbar;
     @BindView(R.id.log_recycler)
     RecyclerView logRecycler;
+    @BindView(R.id.btn_del)
+    Button btnDel;
 
     private LogData logData;
 
@@ -134,6 +146,53 @@ public class LogDescActivity extends AppCompatActivity {
                     default:
                         break;
                 }
+            }
+        });
+    }
+
+// todo : 添加删除功能待测试
+    @OnClick(R.id.btn_del)
+    public void onViewClicked() {
+        if (GeneralMethod.isFastClick()) {
+//            delete("" + logData.getId());
+        }
+
+    }
+
+    public void delete(String id) {
+        Map<String, Object> listcanshu = new HashMap<>();
+        OKHttpClass okHttpClass = new OKHttpClass();
+
+        listcanshu.put("id", id);
+
+        //设置请求类型、地址和参数
+        okHttpClass.setPostCanShu(LogDescActivity.this, RequestURL.removeProjectLog, listcanshu);
+        okHttpClass.setGetIntenetData(new OKHttpClass.GetData() {
+            @Override
+            public String requestData(String dataString) {
+                //请求成功数据回调
+                L.log("deleted", "" + dataString);
+
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject(dataString);
+
+
+                    String message = jsonObject.getString("message");
+                    String data = jsonObject.getString("data");
+                    int code = jsonObject.getInt("code");
+
+                    if (code == 200) {
+                        ToastUtils.showBottomToast(LogDescActivity.this, "删除成功");
+                        finish();
+                    } else {
+                        ToastUtils.showBottomToast(LogDescActivity.this, "" + message);
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                return dataString;
             }
         });
     }
