@@ -657,6 +657,7 @@ public class ClockInActivity extends AppCompatActivity implements PunchCardInter
     }
 
 
+
     //上传图片到oss
     private void updateOss(String filename, String filePath) {
 
