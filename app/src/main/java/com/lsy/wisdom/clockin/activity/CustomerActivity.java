@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,6 +44,7 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by lsy on 2020/5/12
@@ -58,6 +60,7 @@ public class CustomerActivity extends AppCompatActivity implements QuanXian.OnPe
     GroupButtonView gbvCustomer;
     @BindView(R.id.process_recycler)
     RecyclerView processRecycler;
+
 
 
     private CommonAdapter commonAdapter;
@@ -384,6 +387,7 @@ public class CustomerActivity extends AppCompatActivity implements QuanXian.OnPe
                 Manifest.permission.CALL_PHONE
         );
     }
+
 
 
 }

@@ -150,11 +150,11 @@ public class LogDescActivity extends AppCompatActivity {
         });
     }
 
-// todo : 添加删除功能待测试
+    //刪除日志
     @OnClick(R.id.btn_del)
     public void onViewClicked() {
         if (GeneralMethod.isFastClick()) {
-//            delete("" + logData.getId());
+            delete("" + logData.getId());
         }
 
     }
@@ -166,7 +166,7 @@ public class LogDescActivity extends AppCompatActivity {
         listcanshu.put("id", id);
 
         //设置请求类型、地址和参数
-        okHttpClass.setPostCanShu(LogDescActivity.this, RequestURL.removeProjectLog, listcanshu);
+        okHttpClass.setPostCanShu(LogDescActivity.this, RequestURL.deleteData, listcanshu);
         okHttpClass.setGetIntenetData(new OKHttpClass.GetData() {
             @Override
             public String requestData(String dataString) {

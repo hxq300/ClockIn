@@ -414,7 +414,7 @@ public class ClockInActivity extends AppCompatActivity implements PunchCardInter
     // 签到成功回调
     @Override
     public void setInId(int registration_id) {
-        sharedUtils.setData(SharedUtils.CLOCKID, registration_id);
+        sharedUtils.setData(SharedUtils.CLOCKID, registration_id); // todo bug 出现场景（用户上班打卡完成 下载App 再次安装 下班打卡失败）
         playFromRawFile(this);
         smasher.with(clockClick)
                 .setStyle(SmashAnimator.STYLE_DROP)    // 设置动画样式

@@ -59,14 +59,15 @@
                     android:textColor="@color/four"
                     android:textSize="15sp" />
 
-                <TextView
+                <EditText
                     android:id="@+id/cdesc_util"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="@dimen/thirty"
                     android:text=""
                     android:textColor="@color/four"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:background="@null"/>
 
             </LinearLayout>
 
@@ -86,14 +87,15 @@
                     android:textColor="@color/four"
                     android:textSize="15sp" />
 
-                <TextView
+                <EditText
                     android:id="@+id/cdesc_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="@dimen/thirty"
                     android:text=""
                     android:textColor="@color/four"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:background="@null"/>
 
             </LinearLayout>
 
@@ -175,14 +177,15 @@
                     android:textColor="@color/four"
                     android:textSize="15sp" />
 
-                <TextView
+                <EditText
                     android:id="@+id/cdesc_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="@dimen/thirty"
                     android:text="拜访"
                     android:textColor="@color/four"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:background="@null"/>
 
             </LinearLayout>
 
@@ -213,5 +216,18 @@
 
         </LinearLayout>
     </com.lsy.wisdom.clockin.widget.RecyclerScrollView>
+
+    <Button
+        android:id="@+id/btn_del"
+        android:layout_width="280dp"
+        android:layout_height="@dimen/line_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@drawable/buttom_blue"
+        android:gravity="center"
+        android:text="提交编辑"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:layout_marginBottom="@dimen/dp_10"/>
 
 </LinearLayout>

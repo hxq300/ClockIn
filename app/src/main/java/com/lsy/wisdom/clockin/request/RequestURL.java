@@ -5,8 +5,8 @@ package com.lsy.wisdom.clockin.request;
  * MODO :
  */
 public class RequestURL {
-
-    //    public static String RequestUrl = "http://192.168.1.103:8188";
+        // 本地
+//        public static String RequestUrl = "http://192.168.1.103:8188";
     public static String RequestUrl = "http://101.132.154.10:8188";
     //    public static String RequestImg = "http://192.168.1.103:8188/img/download_img?img_url=";
     public static String RequestImg = "http://101.132.154.10:8188/img/download_img?img_url=";
@@ -33,6 +33,8 @@ public class RequestURL {
     public static String addLog = RequestUrl + "/Log/InsertLog?";//添加日志
     public static String getLog = RequestUrl + "/Log/FindLogByStaffId?";//查询个人日志
     public static String getStaffLog = RequestUrl + "/Log/FindLogByIdY?";//查询个人日志
+    public static String deleteData = RequestUrl + "/Log/DeleteLog?"; // 删除
+
 
     //公告
     public static String getNotice = RequestUrl + "/Announcement/FindAnnouncement?";//分页模糊查询公告
@@ -53,6 +55,7 @@ public class RequestURL {
     public static String customerQuery = RequestUrl + "/Items/FindItemsApp?";//客户查询
     public static String addCustomer = RequestUrl + "/Items/InsertItems?";//添加客户
     public static String addPush = RequestUrl + "/Items/PushItems?";//推送客户
+    public static String updateMessage = RequestUrl + "/Items/UpdateItems?"; // 修改用户信息
 
     //跟进信息
     public static String addProcess = RequestUrl + "/Schedule/InsertSchedule?";//推送客户

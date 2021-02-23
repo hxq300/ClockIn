@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +22,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 import com.lsy.wisdom.clockin.R;
+import com.lsy.wisdom.clockin.activity.CustomerActivity;
 import com.lsy.wisdom.clockin.activity.add.AddClientActivity;
+import com.lsy.wisdom.clockin.activity.add.AddCustomerlActivity;
 import com.lsy.wisdom.clockin.activity.add.AddProcessActivity;
 import com.lsy.wisdom.clockin.activity.add.AddSignedActivity;
 import com.lsy.wisdom.clockin.bean.ClientData;
@@ -30,12 +34,14 @@ import com.lsy.wisdom.clockin.request.OKHttpClass;
 import com.lsy.wisdom.clockin.request.RequestURL;
 import com.lsy.wisdom.clockin.utils.L;
 import com.lsy.wisdom.clockin.utils.StatusBarUtil;
+import com.lsy.wisdom.clockin.utils.ToastUtils;
 import com.lsy.wisdom.clockin.widget.IToolbar;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,6 +50,7 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by lsy on 2020/5/12
@@ -56,15 +63,17 @@ public class CustomerDescActivity extends AppCompatActivity implements QuanXian.
     @BindView(R.id.cdesc_time)
     TextView cdescTime;
     @BindView(R.id.cdesc_type)
-    TextView cdescType;
+    EditText cdescType;
     @BindView(R.id.cdesc_name)
-    TextView cdescName;
+    EditText cdescName;
     @BindView(R.id.cdesc_recycler)
     RecyclerView cdescRecycler;
     @BindView(R.id.cdesc_util)
-    TextView cdescUtil;
+    EditText cdescUtil;
     @BindView(R.id.cdesc_yuangong)
     TextView cdescYuangong;
+    @BindView(R.id.btn_del)
+    Button btnDel;
 
     private Company company;
 
@@ -290,5 +299,53 @@ public class CustomerDescActivity extends AppCompatActivity implements QuanXian.
         quanXian.requestPermissions(
                 Manifest.permission.CALL_PHONE
         );
+    }
+
+    // 提交编辑
+    @OnClick(R.id.btn_del)
+    public void onViewClicked() {
+        Map<String, Object> listcanshu = new HashMap<>();
+        OKHttpClass okHttpClass = new OKHttpClass();
+        //传参:staff_id(登录返回),conglomerate_id(登录返回)
+        String s = cdescUtil.getText().toString();
+        listcanshu.put("id", company.getId());
+        listcanshu.put("items_name",cdescUtil.getText().toString() +"");
+        listcanshu.put("bloc_name", cdescName.getText().toString()+"");
+        listcanshu.put("type", cdescType.getText().toString()+"");
+
+        //设置请求类型、地址和参数
+        okHttpClass.setPostCanShu(CustomerDescActivity.this, RequestURL.updateMessage, listcanshu);
+        okHttpClass.setGetIntenetData(new OKHttpClass.GetData() {
+            @Override
+            public String requestData(String dataString) {
+                //请求成功数据回调
+                L.log("customerQuery", "" + dataString);
+
+//                Gson gson = new Gson();
+
+                //{"message":"客户添加成功,暂无联系人!","data":null,"code":200}
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject(dataString);
+
+
+                    String message = jsonObject.getString("message");
+                    String data = jsonObject.getString("data");
+                    int code = jsonObject.getInt("code");
+
+                    if (code == 200) {
+                        ToastUtils.showBottomToast(CustomerDescActivity.this, "" + message);
+                        finish();
+                    } else {
+                        ToastUtils.showBottomToast(CustomerDescActivity.this, "" + message);
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                return dataString;
+            }
+        });
     }
 }
