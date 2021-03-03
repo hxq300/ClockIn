@@ -3,6 +3,7 @@ package com.lsy.wisdom.clockin.mvp;
 import android.content.Context;
 
 import com.google.gson.Gson;
+import com.lsy.wisdom.clockin.bean.SignOutIdEntity;
 import com.lsy.wisdom.clockin.request.OKHttpClass;
 import com.lsy.wisdom.clockin.request.RequestURL;
 import com.lsy.wisdom.clockin.utils.L;
@@ -65,6 +66,29 @@ public class PunchCardModel implements PunchCardInterface.Model {
     }
 
     @Override
+    public void getRegistrationId() {
+        Map<String, Object> listcanshu = new HashMap<>();
+        OKHttpClass okHttpClass = new OKHttpClass();
+        int userId = OKHttpClass.getUserId(context);
+        listcanshu.put("staff_id", userId);
+
+        //设置请求类型、地址和参数
+        okHttpClass.setPostCanShu(context, RequestURL.outId, listcanshu);
+        okHttpClass.setGetIntenetData(new OKHttpClass.GetData() {
+            @Override
+            public String requestData(String dataString) {
+                //请求成功数据回调
+                Gson gson = new Gson();
+                SignOutIdEntity signOutIdEntity = gson.fromJson(dataString, SignOutIdEntity.class);
+                presenter.responseSuccessRegistrationId(signOutIdEntity.getRegistration_id());
+
+
+                return dataString;
+            }
+        });
+    }
+
+    @Override
     public void signIn(int id, int conglomerate_id, int company_id, String in_address, String remarkD, String longitude, String latitude, String url) {
         Map<String, Object> listcanshu = new HashMap<>();
         OKHttpClass okHttpClass = new OKHttpClass();
@@ -98,8 +122,7 @@ public class PunchCardModel implements PunchCardInterface.Model {
                     jsonObject1 = new JSONObject(data);
 
                     if (code == 200) {
-                        int id = jsonObject1.getInt("id");
-                        presenter.responseInId(id);
+                        presenter.responseSuccess();
                     } else {
                         ToastUtils.showBottomToast(context, "" + message);
                     }

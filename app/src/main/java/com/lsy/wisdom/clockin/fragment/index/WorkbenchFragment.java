@@ -7,20 +7,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lsy.wisdom.clockin.R;
 import com.lsy.wisdom.clockin.activity.ClockInActivity;
 import com.lsy.wisdom.clockin.activity.CustomerActivity;
+import com.lsy.wisdom.clockin.activity.IncomeActivity;
 import com.lsy.wisdom.clockin.activity.LogActivity;
-import com.lsy.wisdom.clockin.activity.PunchCardRecordActivity;
 import com.lsy.wisdom.clockin.activity.RecordActivity;
-import com.lsy.wisdom.clockin.activity.add.AddReimburseActivity;
 import com.lsy.wisdom.clockin.activity.project.ProjectActivity;
 import com.lsy.wisdom.clockin.activity.task.MyTaskActivity;
 import com.lsy.wisdom.clockin.fragment.MyFragment;
 import com.youth.banner.Banner;
-import com.youth.banner.BannerConfig;
 import com.youth.banner.listener.OnBannerListener;
 import com.youth.banner.loader.ImageLoader;
 
@@ -41,6 +40,8 @@ public class WorkbenchFragment extends MyFragment {
 
     @BindView(R.id.banner_pic)
     Banner bannerPic;
+    @BindView(R.id.income_btn)
+    TextView incomeBtn;
     private View view;
 
     private List<Integer> images = new ArrayList<>();
@@ -115,7 +116,8 @@ public class WorkbenchFragment extends MyFragment {
 
     @OnClick({R.id.message_voice, R.id.message_log, R.id.message_clock_in, R.id.message_approval,
             R.id.message_evection, R.id.message_extra_work, R.id.message_customer, R.id.message_leave,
-            R.id.message_reimburse, R.id.message_purchase, R.id.message_conversion, R.id.message_project, R.id.message_task})
+            R.id.message_reimburse, R.id.message_purchase, R.id.message_conversion, R.id.message_project,
+            R.id.message_task,R.id.income_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.message_voice://语音
@@ -199,9 +201,13 @@ public class WorkbenchFragment extends MyFragment {
                 startActivity(task);
                 break;
 
-
+            case R.id.income_btn: // 收支
+                startActivity(new Intent(getActivity(), IncomeActivity.class));
+                break;
             default:
                 break;
         }
     }
+
+
 }

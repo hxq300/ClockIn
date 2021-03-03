@@ -56,6 +56,7 @@ import com.bumptech.glide.Glide;
 import com.fadai.particlesmasher.ParticleSmasher;
 import com.fadai.particlesmasher.SmashAnimator;
 import com.lsy.wisdom.clockin.R;
+import com.lsy.wisdom.clockin.activity.add.AddPurchaseActivity;
 import com.lsy.wisdom.clockin.activity.add.AddReimburseActivity;
 import com.lsy.wisdom.clockin.mvp.PunchCardInterface;
 import com.lsy.wisdom.clockin.mvp.PunchCardPresent;
@@ -87,7 +88,8 @@ import butterknife.OnClick;
 
 /**
  * Created by lsy on 2020/5/8
- * todo : 打卡
+ * todo : 打卡   bug： 解决方案  在请求签到状态 接口的时候 返回 registration_id
+ *
  */
 public class ClockInActivity extends AppCompatActivity implements PunchCardInterface.View, QuanXian.OnPermission, OssService.OssCallback {
 
@@ -144,6 +146,7 @@ public class ClockInActivity extends AppCompatActivity implements PunchCardInter
     private List<String> imageList = new ArrayList<>();
     private List<Uri> picPahts = new ArrayList<>();
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -180,8 +183,6 @@ public class ClockInActivity extends AppCompatActivity implements PunchCardInter
         sharedUtils = new SharedUtils(ClockInActivity.this, SharedUtils.CLOCK);
 
         presenter = new PunchCardPresent(this, ClockInActivity.this);
-
-        presenter.getStatus("" + OKHttpClass.getUserId(ClockInActivity.this));
 
         //判断权限是否全部打开
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
@@ -410,12 +411,14 @@ public class ClockInActivity extends AppCompatActivity implements PunchCardInter
     @Override
     public void setStatus(String clockstatus) {
         this.clockstatus = clockstatus;
+        //todo 签到修改
+        qiandao();
     }
     // 签到成功回调
     @Override
     public void setInId(int registration_id) {
         sharedUtils.setData(SharedUtils.CLOCKID, registration_id); // todo bug 出现场景（用户上班打卡完成 下载App 再次安装 下班打卡失败）
-        playFromRawFile(this);
+//        playFromRawFile(this);
         smasher.with(clockClick)
                 .setStyle(SmashAnimator.STYLE_DROP)    // 设置动画样式
                 .setDuration(1500)                     // 设置动画时间
@@ -439,12 +442,11 @@ public class ClockInActivity extends AppCompatActivity implements PunchCardInter
                 .start();
 
         clockClick.setText("打卡成功");
-        presenter.getStatus("" + OKHttpClass.getUserId(ClockInActivity.this));
     }
 
     @Override
     public void setSuccess() {
-        playFromRawFile(this);
+//        playFromRawFile(this);
 
         smasher.with(clockClick)
                 .setStyle(SmashAnimator.STYLE_DROP)    // 设置动画样式
@@ -470,6 +472,13 @@ public class ClockInActivity extends AppCompatActivity implements PunchCardInter
 
         clockClick.setText("打卡成功");
 //        ToastUtils.showBottomToast(this, "打卡成功啦");
+    }
+
+    @Override
+    public void setRegistrationId(int registrationId) {
+        presenter.signOut(OKHttpClass.getUserId(ClockInActivity.this), sharedUtils.getIntData(SharedUtils.JITUANID), sharedUtils.getIntData(SharedUtils.COMPANYID), texLocationName.getText().toString(),
+                editRemark.getText().toString(), "" + mLongitude, "" + mLatitude, registrationId, "" + imageList.toString());
+
     }
 
     /**
@@ -549,41 +558,10 @@ public class ClockInActivity extends AppCompatActivity implements PunchCardInter
 
                 break;
             case R.id.clock_click:
-
                 L.log("commit", "" + texLocationName.getText().toString() + "----" + "" + mLongitude + "---" + mLatitude);
-//                if (GeneralMethod.isFastClick()) {
-//                    //（1签到   0签退）
-//                    if (clockstatus.equals("1")) {
-//                        //id(员工id),company_id(登录返回信息),in_address(打卡地址),remarkD(备注),longitude(经度),latitude(纬度)
-//                        presenter.signIn(OKHttpClass.getUserId(ClockInActivity.this), sharedUtils.getIntData(SharedUtils.JITUANID), sharedUtils.getIntData(SharedUtils.COMPANYID), "俞泾港路  在金赢108金座附近",
-//                                editRemark.getText().toString(), "" + mLongitude, "" + mLatitude, "" + imageList.toString());
-//                    } else if (clockstatus.equals("0")) {
-//                        //id(员工id),company_id(登录返回信息),out_address(打卡地址),remarkT(备注),longitude(经度),latitude(纬度),registration_id(打卡id,签到返回)
-//                        presenter.signOut(OKHttpClass.getUserId(ClockInActivity.this), sharedUtils.getIntData(SharedUtils.JITUANID), sharedUtils.getIntData(SharedUtils.COMPANYID), texLocationName.getText().toString(),
-//                                editRemark.getText().toString(), "121.472738", "31.272563", sharedUtils.getIntData(SharedUtils.CLOCKID), "" + imageList.toString());
-//                    }
-
                 if (GeneralMethod.isFastClick()) {
-                    if (imageList.size() >= 1) {
-
-                        L.log("上传数据");
-                        if (clockstatus.equals("1")) {
-                            L.log("打卡");
-                            //id(员工id),company_id(登录返回信息),in_address(打卡地址),remarkD(备注),longitude(经度),latitude(纬度)
-                            presenter.signIn(OKHttpClass.getUserId(ClockInActivity.this), sharedUtils.getIntData(SharedUtils.JITUANID), sharedUtils.getIntData(SharedUtils.COMPANYID), texLocationName.getText().toString(),
-                                    editRemark.getText().toString(), "" + mLongitude, "" + mLatitude, "" + imageList.toString());
-                        } else if (clockstatus.equals("0")) {
-                            L.log("打卡");
-                            //id(员工id),company_id(登录返回信息),out_address(打卡地址),remarkT(备注),longitude(经度),latitude(纬度),registration_id(打卡id,签到返回)
-                            presenter.signOut(OKHttpClass.getUserId(ClockInActivity.this), sharedUtils.getIntData(SharedUtils.JITUANID), sharedUtils.getIntData(SharedUtils.COMPANYID), texLocationName.getText().toString(),
-                                    editRemark.getText().toString(), "" + mLongitude, "" + mLatitude, sharedUtils.getIntData(SharedUtils.CLOCKID), "" + imageList.toString());
-                        } else {
-                            ToastUtils.showBottomToast(this, "状态不正确" + clockstatus);
-                        }
-                    } else {
-                        ToastUtils.showBottomToast(this, "签到需要拍照");
-                    }
-
+                    // todo 获取修改 签到状态 上班/下班
+                    presenter.getStatus("" + OKHttpClass.getUserId(ClockInActivity.this));
                 }
 
                 break;
@@ -597,6 +575,28 @@ public class ClockInActivity extends AppCompatActivity implements PunchCardInter
 
             default:
                 break;
+        }
+    }
+
+    private void qiandao() {
+        if (imageList.size() >= 1) {
+
+            L.log("上传数据");
+            if (clockstatus.equals("1")) {
+                L.log("上班打卡");
+                //id(员工id),company_id(登录返回信息),in_address(打卡地址),remarkD(备注),longitude(经度),latitude(纬度)
+                presenter.signIn(OKHttpClass.getUserId(ClockInActivity.this), sharedUtils.getIntData(SharedUtils.JITUANID), sharedUtils.getIntData(SharedUtils.COMPANYID), texLocationName.getText().toString(),
+                        editRemark.getText().toString(), "" + mLongitude, "" + mLatitude, "" + imageList.toString());
+            } else if (clockstatus.equals("0")) {
+                L.log("下班打卡");
+                presenter.getRegistrationId(); // 获取下班打卡所需参数 id
+                //id(员工id),company_id(登录返回信息),out_address(打卡地址),remarkT(备注),longitude(经度),latitude(纬度),registration_id(打卡id,签到返回)
+
+            } else {
+                ToastUtils.showBottomToast(this, "状态不正确" + clockstatus);
+            }
+        } else {
+            ToastUtils.showBottomToast(this, "签到需要拍照");
         }
     }
 
@@ -662,7 +662,7 @@ public class ClockInActivity extends AppCompatActivity implements PunchCardInter
     private void updateOss(String filename, String filePath) {
 
         //初始化OssService类，参数分别是Content，accessKeyId，accessKeySecret，endpoint，bucketName（后4个参数是您自己阿里云Oss中参数）
-        OssService ossService = new OssService(ClockInActivity.this, "LTAI4Fjcn7J9c5aCVFTYabqE", OssService.ACCESS_KEY_SECRET, "http://oss-cn-shanghai.aliyuncs.com", "jjjt");
+        OssService ossService = new OssService(ClockInActivity.this, OssService.ACCESS_KEY_ID, OssService.ACCESS_KEY_SECRET, "http://oss-cn-shanghai.aliyuncs.com", "jjjt");
         //初始化OSSClient
         ossService.initOSSClient();
 

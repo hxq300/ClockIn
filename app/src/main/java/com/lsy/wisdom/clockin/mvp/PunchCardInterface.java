@@ -12,6 +12,8 @@ public interface PunchCardInterface {
     interface Model {
         void getStatus(String id);//获取打卡状态
 
+        void getRegistrationId(); // 获取下班打卡参数
+
         //id(员工id),company_id(登录返回信息),in_address(打卡地址),remarkD(备注),longitude(经度),latitude(纬度)
         void signIn(int id, int conglomerate_id, int company_id, String in_address, String remarkD, String longitude, String latitude,String url);//签到
 
@@ -27,6 +29,8 @@ public interface PunchCardInterface {
         void setInId(int registration_id);//签到返回ID
 
         void setSuccess();//
+
+        void setRegistrationId(int registrationId); // 下班打卡参数获取成功
     }
 
     interface Presenter {
@@ -47,6 +51,10 @@ public interface PunchCardInterface {
         void responseSuccess();
 
         void distory();
+
+        void responseSuccessRegistrationId(int registration_id);
+
+        void getRegistrationId(); // 获取下班打卡参数
     }
 
 }

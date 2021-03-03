@@ -454,7 +454,8 @@
             android:name=".activity.task.TaskPassActivity"
             android:launchMode="singleTask"
             android:screenOrientation="nosensor" />
-
+        <!--收支明细-->
+        <activity android:name=".activity.IncomeActivity"/>
 
     </application>
 

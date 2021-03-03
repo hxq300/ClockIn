@@ -5,8 +5,9 @@ package com.lsy.wisdom.clockin.request;
  * MODO :
  */
 public class RequestURL {
-        // 本地
+        // 测试服
 //        public static String RequestUrl = "http://192.168.1.103:8188";
+    //正式服
     public static String RequestUrl = "http://101.132.154.10:8188";
     //    public static String RequestImg = "http://192.168.1.103:8188/img/download_img?img_url=";
     public static String RequestImg = "http://101.132.154.10:8188/img/download_img?img_url=";
@@ -19,6 +20,7 @@ public class RequestURL {
     public static String findClockstatus = RequestUrl + "/Staff/FindClockstatus?";//打卡状态（1签到   0签退）
     public static String insertRegistration = RequestUrl + "/Registration/InsertRegistration?";//签到
     public static String updateRegistration = RequestUrl + "/Registration/UpdateRegistration?";//签退
+    public static String outId = RequestUrl + "/Storage/FindStorageByStaffId?";// 获取下班打卡 所需id
 
     public static String getRecordHistory = RequestUrl + "/RegistrationRecord/FindRegistrationRecordByStaffId?";//获取打卡记录
     public static String getAllCard = RequestUrl + "/RegistrationRecord/FindAll?";//查看全部打卡记录

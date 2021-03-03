@@ -53,4 +53,15 @@ public class PunchCardPresent implements PunchCardInterface.Presenter {
     public void distory() {
         view = null;
     }
+
+    @Override
+    public void responseSuccessRegistrationId(int registration_id) {
+        view.setRegistrationId(registration_id);
+    }
+
+    @Override
+    public void getRegistrationId() {
+        model.getRegistrationId();
+    }
+
 }

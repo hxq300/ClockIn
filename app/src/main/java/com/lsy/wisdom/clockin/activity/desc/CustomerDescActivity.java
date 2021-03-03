@@ -318,12 +318,7 @@ public class CustomerDescActivity extends AppCompatActivity implements QuanXian.
         okHttpClass.setGetIntenetData(new OKHttpClass.GetData() {
             @Override
             public String requestData(String dataString) {
-                //请求成功数据回调
                 L.log("customerQuery", "" + dataString);
-
-//                Gson gson = new Gson();
-
-                //{"message":"客户添加成功,暂无联系人!","data":null,"code":200}
                 JSONObject jsonObject = null;
                 try {
                     jsonObject = new JSONObject(dataString);

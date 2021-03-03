@@ -8,8 +8,8 @@ android {
         applicationId "com.lsy.wisdom.clockin"
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 3
-        versionName "1.0"
+        versionCode 4
+        versionName "1.0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         flavorDimensions "versionCode"
@@ -45,10 +45,10 @@ android {
 //        }
 //        Vivo {//投放vivo市场
 //        }
-//        Oppo {//投放oppo市场
-//        }
-//        Xiaomi {//投放小米市场
-//        }
+        Oppo {//投放oppo市场
+        }
+        Xiaomi {//投放小米市场
+        }
 //        Meizu {//投放魅族市场
 //        }
 //        Huawei {//投放华为应用市场

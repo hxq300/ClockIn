@@ -249,6 +249,29 @@
         </LinearLayout>
 
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/twenty"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/income_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/income_icon"
+                android:drawablePadding="@dimen/seven"
+                android:gravity="center"
+                android:padding="@dimen/ten"
+                android:text="收支"
+                android:textColor="@color/eight"
+                android:textSize="15sp" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"/>
+        </LinearLayout>
     </LinearLayout>
 
 
