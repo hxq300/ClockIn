@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,11 +22,12 @@ import com.lsy.wisdom.clockin.request.RequestURL;
 import com.lsy.wisdom.clockin.utils.L;
 import com.lsy.wisdom.clockin.utils.StatusBarUtil;
 import com.lsy.wisdom.clockin.widget.IToolbar;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 import com.zhy.adapter.recyclerview.wrapper.EmptyWrapper;
-import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
-import com.zhy.adapter.recyclerview.wrapper.LoadMoreWrapper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,8 +51,9 @@ public class ProjectActivity extends AppCompatActivity {
     IToolbar addLeaveToolbar;
     @BindView(R.id.recycler_project)
     RecyclerView recyclerProject;
-    @BindView(R.id.refresh_layout)
-    RefreshLayout refreshLayout;
+    @BindView(R.id.smartRefreshLayout)
+    SmartRefreshLayout mSmartRefreshLayout;
+
 
     private int pageNum = 1;
 
@@ -92,62 +93,24 @@ public class ProjectActivity extends AppCompatActivity {
         recyclerProject.setNestedScrollingEnabled(false);
 
 
-        //设置头部(刷新)
-        refreshLayout.setHeaderView(new HeaderView(this));
-
-        //设置尾部(加载更多)
-        refreshLayout.setFooterView(new FooterView(this));
-
-        //设置刷新监听，触发刷新时回调
-        refreshLayout.setOnRefreshListener(new RefreshLayout.OnRefreshListener() {
+        // 下拉
+        mSmartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
-            public void onRefresh() {
-                // 刷新回调
+            public void onRefresh(com.scwang.smartrefresh.layout.api.RefreshLayout refreshlayout) {
                 projectDataList.clear();
                 pageNum = 1;
                 getData(pageNum);
-                //通知刷新完成，isSuccess是否刷新成功
-                refreshLayout.finishRefresh(true);
             }
         });
-
-//设置上拉加载更多的监听，触发加载时回调。
-//RefreshLayout默认没有启用上拉加载更多的功能，如果设置了OnLoadMoreListener，则自动启用。
-        refreshLayout.setOnLoadMoreListener(new RefreshLayout.OnLoadMoreListener() {
+        // 上拉
+        mSmartRefreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
             @Override
-            public void onLoadMore() {
-                // 加载回调
-
+            public void onLoadmore(com.scwang.smartrefresh.layout.api.RefreshLayout refreshlayout) {
                 pageNum++;
 //                loadMore();
                 getData(pageNum);
-
             }
         });
-
-        // 启用下拉刷新功能。默认启用
-        refreshLayout.setRefreshEnable(true);
-
-        // 启用上拉加载更多功能。默认不启用，如果设置了OnLoadMoreListener，则自动启用。
-        refreshLayout.setLoadMoreEnable(true);
-
-        // 是否还有更多数据，只有为true是才能上拉加载更多，它会回调FooterView的onHasMore()方法。默认为true。
-        refreshLayout.hasMore(true);
-
-        //自动触发下拉刷新。只有启用了下拉刷新功能时起作用。
-        refreshLayout.autoRefresh();
-
-        //自动触发上拉加载更多，在滑动到底部的时候，自动加载更多。只有在启用了上拉加载更多功能并且有更多数据时起作用。
-        refreshLayout.autoLoadMore();
-
-        ////通知刷新完成，isSuccess是否刷新成功
-        //        refreshLayout.finishRefresh( boolean isSuccess);
-        //
-        ////通知加载完成，isSuccess是否加载成功，hasMore是否还有更多数据
-        //        refreshLayout.finishLoadMore( boolean isSuccess, boolean hasMore);
-
-        // 是否自动触发加载更多。只有在启用了上拉加载更多功能时起作用。
-        refreshLayout.setAutoLoadMore(true);
 
         // 隐藏内容布局，显示空布局。
         //refreshLayout.showEmpty();
@@ -255,11 +218,13 @@ public class ProjectActivity extends AppCompatActivity {
 
                     if (pageNum > 1 && jsonArray.length() == 0) {
                         //通知加载完成，isSuccess是否加载成功，hasMore是否还有更多数据
-                        refreshLayout.finishLoadMore(true, false);
+                        mSmartRefreshLayout.finishRefresh();
+                        mSmartRefreshLayout.finishLoadmore();
 //                        refreshLayout.showEmpty();
                     } else {
                         //通知加载完成，isSuccess是否加载成功，hasMore是否还有更多数据
-                        refreshLayout.finishLoadMore(true, true);
+                        mSmartRefreshLayout.finishRefresh();
+                        mSmartRefreshLayout.finishLoadmore();
                         commonAdapter.notifyDataSetChanged();
 //                        refreshLayout.hideEmpty();
                     }

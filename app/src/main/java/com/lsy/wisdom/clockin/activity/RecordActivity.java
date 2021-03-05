@@ -195,6 +195,13 @@ public class RecordActivity extends AppCompatActivity implements RecordInterface
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if ("待审核".equals(titleState))
+        loadData(titleState, 1);
+    }
+
     /**
      * Description：给TabLayout添加tab
      */
@@ -245,6 +252,7 @@ public class RecordActivity extends AppCompatActivity implements RecordInterface
         });
         recordTablayout.bringToFront();
     }
+
 
     private void initView() {
 

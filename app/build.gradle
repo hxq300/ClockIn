@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        release {
+            storePassword 'clockin'
+            keyAlias = 'clockin'
+            keyPassword 'clockin'
+            storeFile file('C:\\Users\\a\\Desktop\\ClockIn\\clockIn.jks')
+        }
+    }
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
 
@@ -18,6 +26,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

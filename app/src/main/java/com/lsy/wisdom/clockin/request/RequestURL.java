@@ -99,4 +99,9 @@ public class RequestURL {
     public static String taskPass = RequestUrl + "/Task/UpdateTaskT?";//任务通过
     public static String taskReject = RequestUrl + "/Task/UpdateTaskStateW?";//任务驳回
 
+    //收支
+    public static String payApplyFor = RequestUrl + "/Budget/FindBudget?";//费用收支明细
+    public static String payRecord = RequestUrl + "/Balance/FindBalance?";//付款申请明细
+    public static String deleteRecord = RequestUrl + "/Balance/DeleteBalance?";//删除 付款申请明细
+    public static String deleteApply = RequestUrl + "/Budget/DeleteBudget?";//删除 费用收支明细
 }

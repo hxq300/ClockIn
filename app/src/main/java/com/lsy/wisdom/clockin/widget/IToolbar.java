@@ -220,5 +220,10 @@ public class IToolbar extends Toolbar {
             mContent.setVisibility(GONE);
     }
 
+    public void setTitleText(String str){
+        if (mContent != null && str!=null){
+            mContent.setText(str);
+        }
+    }
 
 }

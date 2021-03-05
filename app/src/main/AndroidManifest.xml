@@ -456,7 +456,8 @@
             android:screenOrientation="nosensor" />
         <!--收支明细-->
         <activity android:name=".activity.IncomeActivity"/>
-
+        <!--收支详情 -->
+        <activity android:name=".activity.IncomePayDetailsActivity"/>
     </application>
 
 </manifest>
