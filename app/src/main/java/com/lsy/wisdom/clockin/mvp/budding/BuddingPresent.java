@@ -2,8 +2,10 @@ package com.lsy.wisdom.clockin.mvp.budding;
 
 import android.content.Context;
 
+import com.lsy.wisdom.clockin.bean.CompanyEntity;
 import com.lsy.wisdom.clockin.bean.ProjectC;
 import com.lsy.wisdom.clockin.bean.ProjectCus;
+import com.lsy.wisdom.clockin.bean.SupplierEntity;
 
 import java.util.List;
 
@@ -35,6 +37,16 @@ public class BuddingPresent implements BuddingInterface.Presenter {
     }
 
     @Override
+    public void getFindCompany() {
+        model.getFindCompany();
+    }
+
+    @Override
+    public void getSelectSupplier() {
+        model.getSelectSupplier();
+    }
+
+    @Override
     public void responseP(List<ProjectC> pList) {
         view.setProject(pList);
     }
@@ -42,6 +54,16 @@ public class BuddingPresent implements BuddingInterface.Presenter {
     @Override
     public void responseC(List<ProjectCus> cList) {
         view.setCustom(cList);
+    }
+
+    @Override
+    public void responseCompany(List<CompanyEntity> companyEntities) {
+        view.responseCompany(companyEntities);
+    }
+
+    @Override
+    public void responseSupplier(List<SupplierEntity> supplierEntities) {
+        view.responseSupplier(supplierEntities);
     }
 
     @Override

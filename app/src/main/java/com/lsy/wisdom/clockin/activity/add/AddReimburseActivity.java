@@ -32,8 +32,10 @@ import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
 import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.bumptech.glide.Glide;
 import com.lsy.wisdom.clockin.R;
+import com.lsy.wisdom.clockin.bean.CompanyEntity;
 import com.lsy.wisdom.clockin.bean.ProjectC;
 import com.lsy.wisdom.clockin.bean.ProjectCus;
+import com.lsy.wisdom.clockin.bean.SupplierEntity;
 import com.lsy.wisdom.clockin.mvp.append.AddInterface;
 import com.lsy.wisdom.clockin.mvp.append.AddPresent;
 import com.lsy.wisdom.clockin.mvp.budding.BuddingInterface;
@@ -617,6 +619,16 @@ public class AddReimburseActivity extends AppCompatActivity implements QuanXian.
     @Override
     public void setCustom(List<ProjectCus> cList) {
         this.cList = cList;
+
+    }
+
+    @Override
+    public void responseCompany(List<CompanyEntity> companyEntities) {
+
+    }
+
+    @Override
+    public void responseSupplier(List<SupplierEntity> supplierEntities) {
 
     }
 

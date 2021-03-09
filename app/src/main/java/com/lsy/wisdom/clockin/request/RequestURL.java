@@ -6,9 +6,9 @@ package com.lsy.wisdom.clockin.request;
  */
 public class RequestURL {
         // 测试服
-//        public static String RequestUrl = "http://192.168.1.103:8188";
+        public static String RequestUrl = "http://192.168.1.103:8188";
     //正式服
-    public static String RequestUrl = "http://101.132.154.10:8188";
+//    public static String RequestUrl = "http://101.132.154.10:8188";
     //    public static String RequestImg = "http://192.168.1.103:8188/img/download_img?img_url=";
     public static String RequestImg = "http://101.132.154.10:8188/img/download_img?img_url=";
     public static String OssUrl = "https://jjjt.oss-cn-shanghai.aliyuncs.com/";
@@ -104,4 +104,13 @@ public class RequestURL {
     public static String payRecord = RequestUrl + "/Balance/FindBalance?";//付款申请明细
     public static String deleteRecord = RequestUrl + "/Balance/DeleteBalance?";//删除 付款申请明细
     public static String deleteApply = RequestUrl + "/Budget/DeleteBudget?";//删除 费用收支明细
+
+    public static String FindCompany = RequestUrl + "/Company/FindCompanyByConglomerateId?"; // 根据集团id查询公司信息
+    public static String SelectSupplier = RequestUrl + "/Supplier/SelectSupplier?"; // 根据集团id查询供应商接口
+
+    public static String AddInsertBalance = RequestUrl + "/Balance/InsertBalance?"; // 支出申请
+    public static String AddInsertBudget = RequestUrl + "/Budget/InsertBudget?"; // 支出申请
+
+
+
 }

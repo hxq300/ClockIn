@@ -1,10 +1,14 @@
 package com.lsy.wisdom.clockin.mvp.budding;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.lsy.wisdom.clockin.bean.CompanyEntity;
 import com.lsy.wisdom.clockin.bean.ProjectC;
 import com.lsy.wisdom.clockin.bean.ProjectCus;
+import com.lsy.wisdom.clockin.bean.SupplierEntity;
 import com.lsy.wisdom.clockin.request.OKHttpClass;
 import com.lsy.wisdom.clockin.request.RequestURL;
 import com.lsy.wisdom.clockin.utils.L;
@@ -117,6 +121,48 @@ public class BuddingModel implements BuddingInterface.Model {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                return dataString;
+            }
+        });
+    }
+
+    @Override
+    public void getFindCompany() {
+        Map<String, Object> listcanshu = new HashMap<>();
+        OKHttpClass okHttpClass = new OKHttpClass();
+        listcanshu.put("conglomerate_id", OKHttpClass.getConglomerate(context));
+
+        //设置请求类型、地址和参数
+        okHttpClass.setPostCanShu(context, RequestURL.FindCompany, listcanshu);
+        okHttpClass.setGetIntenetData(new OKHttpClass.GetData() {
+            @Override
+            public String requestData(String dataString) {
+
+                Gson gson = new Gson();
+                List<CompanyEntity> companyEntities = gson.fromJson(dataString,new TypeToken<List<CompanyEntity>>(){}.getType());
+                presenter.responseCompany(companyEntities);
+                return dataString;
+            }
+        });
+    }
+
+    @Override
+    public void getSelectSupplier() {
+        Map<String, Object> listcanshu = new HashMap<>();
+        OKHttpClass okHttpClass = new OKHttpClass();
+        listcanshu.put("conglomerate_id", OKHttpClass.getConglomerate(context));
+
+        //设置请求类型、地址和参数
+        okHttpClass.setPostCanShu(context, RequestURL.SelectSupplier, listcanshu);
+        okHttpClass.setGetIntenetData(new OKHttpClass.GetData() {
+            @Override
+            public String requestData(String dataString) {
+
+
+                Gson gson = new Gson();
+                List<SupplierEntity> supplierEntities = gson.fromJson(dataString,new TypeToken<List<SupplierEntity>>(){}.getType());
+                presenter.responseSupplier(supplierEntities);
+
                 return dataString;
             }
         });

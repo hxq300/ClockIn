@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -68,6 +69,8 @@ public class IncomePayDetailsActivity extends AppCompatActivity {
     TextView deleteBtn;
     @BindView(R.id.imgRv)
     RecyclerView mImgRv;
+    @BindView(R.id.status_line)
+    LinearLayout statusLine;
 
     private PayIncomeEntity.ItemsBean mData;
     private int mType;
@@ -98,7 +101,7 @@ public class IncomePayDetailsActivity extends AppCompatActivity {
     private void initAdapter() {
         mImgPathList = new ArrayList<>();
         mImgAdapter = new ImgAdapter(mImgPathList);
-        mImgRv.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        mImgRv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         mImgRv.setAdapter(mImgAdapter);
     }
 
@@ -124,30 +127,34 @@ public class IncomePayDetailsActivity extends AppCompatActivity {
             explain.setText(mData.getExplain());
             paymentTime.setText(mData.getPayment_time());
             state.setText(mData.getState());
-            if (mType == 1) { // 费用收支明细
+            if (mType == 1) { // 费用收支
+                statusLine.setVisibility(View.VISIBLE);
                 tvChange.setText("有无发票");
                 ldToolbar.setTitleText("费用收支明细");
-                state.setText(mData.getState());
-            } else if (mType == 0) { // 付款申请明细
+                if (null != mData.getStatus())
+                    status.setText(mData.getStatus());
+            } else if (mType == 0) { // 付款申请
+                statusLine.setVisibility(View.GONE);
                 tvChange.setText("是否通过");
                 ldToolbar.setTitleText("付款申请明细");
                 state.setText(mData.getCheck());
+
             }
             String picture = mData.getPicture();
-            if (!"".equals(picture)){
-                String substring = picture.substring(1, picture.length()-1);
+            if (!"".equals(picture)) {
+                String substring = picture.substring(1, picture.length() - 1);
                 String[] split = substring.split(",");
-                if (split.length != 0){
+                if (split.length != 0) {
                     for (String s : split) {
                         mImgPathList.add(s);
                     }
                     mImgAdapter.notifyDataSetChanged();
-                    Log.d("imgList", "initData: "+mImgPathList.size());
-                    Log.d("imgList", "initData: "+mImgPathList.get(0));
-                }else {
+                    Log.d("imgList", "initData: " + mImgPathList.size());
+                    Log.d("imgList", "initData: " + mImgPathList.get(0));
+                } else {
                     mImgRv.setVisibility(View.GONE);
                 }
-            }else {
+            } else {
                 mImgRv.setVisibility(View.GONE);
             }
 

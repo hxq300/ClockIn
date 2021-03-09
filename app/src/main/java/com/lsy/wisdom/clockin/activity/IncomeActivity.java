@@ -68,7 +68,6 @@ public class IncomeActivity extends AppCompatActivity {
 
         initView();
         initAdapter();
-        getDetailData();
     }
 
     // 初始化 适配器
@@ -131,6 +130,9 @@ public class IncomeActivity extends AppCompatActivity {
                         finish();
                         break;
                     case 1://添加 (传参 根据参数判断 不同明细的添加)
+                        Intent intent = new Intent(IncomeActivity.this, AddIncomeActivity.class);
+                        intent.putExtra("type",type);
+                        startActivity(intent);
                         break;
                     default:
                         break;
@@ -184,7 +186,6 @@ public class IncomeActivity extends AppCompatActivity {
             public String requestData(String dataString) {
                 Gson gson = new Gson();
                 PayIncomeEntity payIncomeEntity = gson.fromJson(dataString, PayIncomeEntity.class);
-                mPayIncomeList.clear();
                 if (payIncomeEntity.getItems().size() != 0) {
                     mPayIncomeList.addAll(payIncomeEntity.getItems());
                 }

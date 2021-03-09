@@ -123,26 +123,7 @@ public class AddLeaveActivity extends AppCompatActivity implements AddInterface.
             case R.id.line_start:
                 if (GeneralMethod.isFastClick()) {
 
-                    if (pickerView != null) {
-                        pickerView.dismiss();
-                    }
-
-                    pickerView = new TimePickerBuilder(AddLeaveActivity.this, new OnTimeSelectListener() {
-                        @Override
-                        public void onTimeSelect(Date date, View v) {//选中事件回调
-                            timeStart = date.getTime();
-                            tvStartTime.setText("" + TimeUtils.getTime(date));
-                        }
-                    }).setTimeSelectChangeListener(new OnTimeSelectChangeListener() {
-                        @Override
-                        public void onTimeSelectChanged(Date date) {
-                            L.log("pvTime", "onTimeSelectChanged");
-                        }
-                    })
-                            .setType(new boolean[]{true, true, true, true, true, true})
-//                            .isDialog(true) //默认设置false ，内部实现将DecorView 作为它的父控件。
-                            .build();
-                    pickerView.show();
+                    initTime();
                 }
                 break;
             case R.id.line_end:
@@ -186,6 +167,29 @@ public class AddLeaveActivity extends AppCompatActivity implements AddInterface.
 
                 break;
         }
+    }
+
+    private void initTime() {
+        if (pickerView != null) {
+            pickerView.dismiss();
+        }
+
+        pickerView = new TimePickerBuilder(AddLeaveActivity.this, new OnTimeSelectListener() {
+            @Override
+            public void onTimeSelect(Date date, View v) {//选中事件回调
+                timeStart = date.getTime();
+                tvStartTime.setText("" + TimeUtils.getTime(date));
+            }
+        }).setTimeSelectChangeListener(new OnTimeSelectChangeListener() {
+            @Override
+            public void onTimeSelectChanged(Date date) {
+                L.log("pvTime", "onTimeSelectChanged");
+            }
+        })
+                .setType(new boolean[]{true, true, true, true, true, true})
+//                            .isDialog(true) //默认设置false ，内部实现将DecorView 作为它的父控件。
+                .build();
+        pickerView.show();
     }
 
 
