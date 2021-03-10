@@ -447,7 +447,6 @@ public class ClockInActivity extends AppCompatActivity implements PunchCardInter
     @Override
     public void setSuccess() {
 //        playFromRawFile(this);
-
         smasher.with(clockClick)
                 .setStyle(SmashAnimator.STYLE_DROP)    // 设置动画样式
                 .setDuration(1500)                     // 设置动画时间
@@ -472,6 +471,8 @@ public class ClockInActivity extends AppCompatActivity implements PunchCardInter
 
         clockClick.setText("打卡成功");
 //        ToastUtils.showBottomToast(this, "打卡成功啦");
+
+        startActivity(new Intent(ClockInActivity.this,PunchCardRecordActivity.class));
     }
 
     @Override
@@ -558,8 +559,8 @@ public class ClockInActivity extends AppCompatActivity implements PunchCardInter
 
                 break;
             case R.id.clock_click:
-                L.log("commit", "" + texLocationName.getText().toString() + "----" + "" + mLongitude + "---" + mLatitude);
                 if (GeneralMethod.isFastClick()) {
+                    clockClick.setEnabled(false);
                     // todo 获取修改 签到状态 上班/下班
                     presenter.getStatus("" + OKHttpClass.getUserId(ClockInActivity.this));
                 }
@@ -594,9 +595,11 @@ public class ClockInActivity extends AppCompatActivity implements PunchCardInter
 
             } else {
                 ToastUtils.showBottomToast(this, "状态不正确" + clockstatus);
+                clockClick.setEnabled(true);
             }
         } else {
             ToastUtils.showBottomToast(this, "签到需要拍照");
+            clockClick.setEnabled(true);
         }
     }
 

@@ -166,14 +166,18 @@ public class AddIncomeActivity extends AppCompatActivity implements QuanXian.OnP
                 Intent intent = new Intent(AddIncomeActivity.this, SubmitToActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.add_approval_submit: // 提交表单
+            case R.id.add_approval_submit: // 添加
                 if (type == 0) {
                     if (condition()) {
                         companyApply(); // 支付申请
+                    }else {
+                        ToastUtils.showBottomToast(this,"信息不完善");
                     }
                 } else if (type == 1) {
                     if (condition() && status != null) { // 收支明细
                         companyPay();
+                    } else {
+                        ToastUtils.showBottomToast(this,"信息不完善");
                     }
                 }
 
@@ -236,6 +240,7 @@ public class AddIncomeActivity extends AppCompatActivity implements QuanXian.OnP
         pvOptions = new OptionsPickerBuilder(this, (options1, options2, options3, v) -> {
             pay.setText(gradeData.get(options1));
             state = gradeData.get(options1);
+            tv_state.setText(gradeData.get(options1));
             // gradeData.get(options1)
         })
                 .setSubmitText("确定")//确定按钮文字
@@ -633,7 +638,12 @@ public class AddIncomeActivity extends AppCompatActivity implements QuanXian.OnP
             gradeData = new ArrayList<>();
         }
         gradeData.clear();
+        if (mCompanyEntities.size() == 0){
+            company.setText("暂无");
+            return;
+        }
         for (int i = 0; i < mCompanyEntities.size(); i++) {
+            if (mCompanyEntities.get(i) != null && mCompanyEntities.get(i).getCompany_name() != null)
             gradeData.add(mCompanyEntities.get(i).getCompany_name());
         }
 
@@ -672,7 +682,12 @@ public class AddIncomeActivity extends AppCompatActivity implements QuanXian.OnP
             gradeData = new ArrayList<>();
         }
         gradeData.clear();
+        if (mSupplierEntities.size() == 0){
+            supplier.setText("暂无");
+            return;
+        }
         for (int i = 0; i < mSupplierEntities.size(); i++) {
+            if (mSupplierEntities.get(i) != null && mSupplierEntities.get(i).getCompany() !=null)
             gradeData.add(mSupplierEntities.get(i).getCompany());
         }
 
@@ -711,7 +726,12 @@ public class AddIncomeActivity extends AppCompatActivity implements QuanXian.OnP
             gradeData = new ArrayList<>();
         }
         gradeData.clear();
+        if (pList.size() == 0){
+            buddingUtil.setText("暂无");
+            return;
+        }
         for (int i = 0; i < pList.size(); i++) {
+            if (pList.get(i) != null && pList.get(i).getProject_name() != null)
             gradeData.add(pList.get(i).getProject_name());
         }
 
@@ -870,7 +890,12 @@ public class AddIncomeActivity extends AppCompatActivity implements QuanXian.OnP
             gradeData = new ArrayList<>();
         }
         gradeData.clear();
+        if (cList.size() == 0){
+            buddingCus.setText("暂无");
+            return;
+        }
         for (int i = 0; i < cList.size(); i++) {
+            if (cList.get(i) != null && cList.get(i).getItems_name()!=null)
             gradeData.add(cList.get(i).getItems_name());
         }
         pvOptions2 = new OptionsPickerBuilder(this, (options1, options2, options3, v) -> {

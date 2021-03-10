@@ -11,12 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 import com.lsy.wisdom.clockin.R;
 import com.lsy.wisdom.clockin.adapter.PayIncomeAdapter;
 import com.lsy.wisdom.clockin.bean.PayIncomeEntity;
 import com.lsy.wisdom.clockin.request.OKHttpClass;
 import com.lsy.wisdom.clockin.request.RequestURL;
+import com.lsy.wisdom.clockin.utils.L;
 import com.lsy.wisdom.clockin.utils.StatusBarUtil;
 import com.lsy.wisdom.clockin.widget.GroupButtonView;
 import com.lsy.wisdom.clockin.widget.IToolbar;
@@ -49,11 +51,19 @@ public class IncomeActivity extends AppCompatActivity {
     RecyclerView mIncomeRecycler;
     @BindView(R.id.smartRefreshLayout)
     SmartRefreshLayout mSmartRefreshLayout;
+    @BindView(R.id.tablayout)
+    TabLayout tablayout;
 
     private int pageNum = 1;
     private PayIncomeAdapter mPayIncomeAdapter;
     private List<PayIncomeEntity.ItemsBean> mPayIncomeList;
     private int type = 0; // 0 费用收支明细 1 付款申请明细
+
+    private List<String> titleData = new ArrayList<>();
+    private String titleState = "待审核";
+
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,8 +77,58 @@ public class IncomeActivity extends AppCompatActivity {
         }
 
         initView();
+        addTabToTabLayout();
         initAdapter();
     }
+
+    /**
+     * Description：给TabLayout添加tab
+     */
+    private void addTabToTabLayout() {
+
+        titleData.add("待审批");
+        titleData.add("通过");
+        titleData.add("驳回");
+
+        for (int i = 0; i < titleData.size(); i++) {
+            L.log("title", "" + titleData.get(i));
+            tablayout.addTab(tablayout.newTab().setText(titleData.get(i)));
+        }
+
+        tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+                mPayIncomeList.clear();
+                if (tab.getText().equals("待审批")) {
+                    pageNum = 1;
+                    titleState = "待审核";
+                } else if (tab.getText().equals("通过")) {
+                    pageNum = 1;
+                    titleState = "通过";
+                } else {
+                    pageNum = 1;
+                    titleState = "驳回";
+                }
+
+                getDetailData();
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                L.log("onTabUnselected", "未选中的" + tab.getText());
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                L.log("onTabReselected", "复选的" + tab.getText());
+
+            }
+        });
+//        tablayout.bringToFront();
+    }
+
 
     // 初始化 适配器
     private void initAdapter() {
@@ -83,9 +143,9 @@ public class IncomeActivity extends AppCompatActivity {
             public void onRefresh(RefreshLayout refreshlayout) {
                 pageNum = 1;
                 mPayIncomeList.clear();
-                if (type == 0){ // 费用收支明细
+                if (type == 0) { // 费用收支明细
                     getDetailData();
-                }else{ // 付款申请明细
+                } else { // 付款申请明细
                     getApplyData();
                 }
             }
@@ -94,10 +154,10 @@ public class IncomeActivity extends AppCompatActivity {
         mSmartRefreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
             @Override
             public void onLoadmore(RefreshLayout refreshlayout) {
-                pageNum ++;
-                if (type == 0){ // 费用收支明细
+                pageNum++;
+                if (type == 0) { // 费用收支明细
                     getApplyData();
-                }else{ // 付款申请明细
+                } else { // 付款申请明细
                     getDetailData();
 
                 }
@@ -110,9 +170,9 @@ public class IncomeActivity extends AppCompatActivity {
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 Intent intent = new Intent(IncomeActivity.this, IncomePayDetailsActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("data",mPayIncomeList.get(position));
+                bundle.putSerializable("data", mPayIncomeList.get(position));
                 intent.putExtras(bundle);
-                intent.putExtra("type",type);
+                intent.putExtra("type", type);
                 startActivity(intent);
             }
         });
@@ -131,7 +191,7 @@ public class IncomeActivity extends AppCompatActivity {
                         break;
                     case 1://添加 (传参 根据参数判断 不同明细的添加)
                         Intent intent = new Intent(IncomeActivity.this, AddIncomeActivity.class);
-                        intent.putExtra("type",type);
+                        intent.putExtra("type", type);
                         startActivity(intent);
                         break;
                     default:
@@ -151,12 +211,14 @@ public class IncomeActivity extends AppCompatActivity {
                         pageNum = 1;
                         type = 0;
                         mPayIncomeList.clear();
+                        tablayout.setVisibility(View.VISIBLE);
                         getDetailData();// 费用申请明细
                         break;
                     case 1:
                         pageNum = 1;
                         type = 1;
                         mPayIncomeList.clear();
+                        tablayout.setVisibility(View.GONE);
                         getApplyData(); // 付款收支明细
                         break;
                     default:
@@ -168,7 +230,7 @@ public class IncomeActivity extends AppCompatActivity {
 
     }
 
-    // 获取 付款申请明细 数据
+    // 申请  todo ： 根据不同状态 获取不同数据
     private void getDetailData() {
 
         Map<String, Object> listcanshu = new HashMap<>();
@@ -178,6 +240,7 @@ public class IncomeActivity extends AppCompatActivity {
         listcanshu.put("staff_id", OKHttpClass.getUserId(IncomeActivity.this));
         listcanshu.put("conglomerate_id", OKHttpClass.getConglomerate(this));
         listcanshu.put("pageNo", pageNum);
+        listcanshu.put("check", titleState);
         listcanshu.put("pageSize", 20);
         //设置请求类型、地址和参数
         okHttpClass.setPostCanShu(IncomeActivity.this, RequestURL.payRecord, listcanshu);
@@ -198,7 +261,7 @@ public class IncomeActivity extends AppCompatActivity {
 
     }
 
-    // 获取 付款收支明细 数据
+    // 明细
     private void getApplyData() {
 
         Map<String, Object> listcanshu = new HashMap<>();
@@ -231,11 +294,11 @@ public class IncomeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (mPayIncomeAdapter!=null){
+        if (mPayIncomeAdapter != null) {
             mPayIncomeList.clear();
-            if (type == 1){
+            if (type == 1) {
                 getApplyData();
-            }else if (type == 0){
+            } else if (type == 0) {
                 getDetailData();
             }
         }

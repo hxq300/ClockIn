@@ -105,11 +105,17 @@ public class RequestURL {
     public static String deleteRecord = RequestUrl + "/Balance/DeleteBalance?";//删除 付款申请明细
     public static String deleteApply = RequestUrl + "/Budget/DeleteBudget?";//删除 费用收支明细
 
-    public static String FindCompany = RequestUrl + "/Company/FindCompanyByConglomerateId?"; // 根据集团id查询公司信息
-    public static String SelectSupplier = RequestUrl + "/Supplier/SelectSupplier?"; // 根据集团id查询供应商接口
+    public static String FindCompany = RequestUrl + "/Company/FindCompanyByConglomerateId?"; // 根据集团id查询公司信息（分页）
+    public static String SelectSupplier = RequestUrl + "/Supplier/SelectSupplier?"; // 根据集团id查询供应商接口（分页）
 
     public static String AddInsertBalance = RequestUrl + "/Balance/InsertBalance?"; // 支出申请
     public static String AddInsertBudget = RequestUrl + "/Budget/InsertBudget?"; // 支出申请
+
+
+    public static String SelectProject = RequestUrl + "/Project/SelectProject?"; // 下拉框查询项目信息
+    public static String SelectItems = RequestUrl + "/Items/SelectItems?"; // 下拉框查询客户信息
+
+
 
 
 

@@ -45,7 +45,7 @@ public class BuddingModel implements BuddingInterface.Model {
         listcanshu.put("staff_id", OKHttpClass.getUserId(context));
 
         //设置请求类型、地址和参数
-        okHttpClass.setPostCanShu(context, RequestURL.bindingProject, listcanshu);
+        okHttpClass.setPostCanShu(context, RequestURL.SelectProject, listcanshu);
         okHttpClass.setGetIntenetData(new OKHttpClass.GetData() {
             @Override
             public String requestData(String dataString) {
@@ -53,29 +53,11 @@ public class BuddingModel implements BuddingInterface.Model {
                 L.log("buddingProject", "" + dataString);
                 Gson gson = new Gson();
 
-                List<ProjectC> projectCList = new ArrayList<>();
+                List<ProjectC> projectCList = gson.fromJson(dataString,new TypeToken<List<ProjectC>>() {}.getType());
 
-                JSONObject jsonObject = null;
-                JSONArray jsonArray = null;
-                try {
-                    jsonObject = new JSONObject(dataString);
+                presenter.responseP(projectCList);
 
 
-                    String message = jsonObject.getString("message");
-                    String data = jsonObject.getString("data");
-
-                    jsonArray = new JSONArray(data);
-
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        ProjectC projectC = gson.fromJson(jsonArray.get(i).toString(), ProjectC.class);
-                        projectCList.add(projectC);
-                    }
-
-                    presenter.responseP(projectCList);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
                 return dataString;
             }
         });
@@ -89,7 +71,7 @@ public class BuddingModel implements BuddingInterface.Model {
         listcanshu.put("staff_id", OKHttpClass.getUserId(context));
 
         //设置请求类型、地址和参数
-        okHttpClass.setPostCanShu(context, RequestURL.bindingCus, listcanshu);
+        okHttpClass.setPostCanShu(context, RequestURL.SelectItems, listcanshu);
         okHttpClass.setGetIntenetData(new OKHttpClass.GetData() {
             @Override
             public String requestData(String dataString) {
@@ -97,30 +79,11 @@ public class BuddingModel implements BuddingInterface.Model {
                 L.log("buddingCus", "" + dataString);
                 Gson gson = new Gson();
 
-                List<ProjectCus> projectCList = new ArrayList<>();
-
-//                //{"message":"打卡成功","data":null,"code":200}
-                JSONObject jsonObject = null;
-                JSONArray jsonArray = null;
-                try {
-                    jsonObject = new JSONObject(dataString);
+                List<ProjectCus> projectCList = gson.fromJson(dataString,new TypeToken<List<ProjectCus>>() {}.getType());
 
 
-                    String message = jsonObject.getString("message");
-                    String data = jsonObject.getString("data");
+                presenter.responseC(projectCList);
 
-                    jsonArray = new JSONArray(data);
-
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        ProjectCus projectC = gson.fromJson(jsonArray.get(i).toString(), ProjectCus.class);
-                        projectCList.add(projectC);
-                    }
-
-                    presenter.responseC(projectCList);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
                 return dataString;
             }
         });
